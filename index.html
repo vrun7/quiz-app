@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1 class="quiz-title">🧠 Knowledge Quiz</h1>
+            <p class="quiz-subtitle">Test your knowledge across different subjects</p>
+        </div>
+
+        <div class="start-screen" id="startScreen">
+            <div class="section-selector">
+                <h3 class="section-title">Choose Your Subject</h3>
+                <div class="sections-grid">
+                    <div class="section-card" data-category="9" onclick="selectSection(this, 'Science')">
+                        <span class="section-icon">🔬</span>
+                        <div class="section-name">Science</div>
+                        <div class="section-description">Biology, Chemistry, Physics</div>
+                    </div>
+                    <div class="section-card" data-category="19" onclick="selectSection(this, 'Math')">
+                        <span class="section-icon">🔢</span>
+                        <div class="section-name">Mathematics</div>
+                        <div class="section-description">Numbers, Algebra, Geometry</div>
+                    </div>
+                    <div class="section-card" data-category="10" onclick="selectSection(this, 'Literature')">
+                        <span class="section-icon">📚</span>
+                        <div class="section-name">Literature</div>
+                        <div class="section-description">Books, Authors, Poetry</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="difficulty-selector">
+                <h3 class="section-title">Select Difficulty</h3>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" data-difficulty="easy" onclick="selectDifficulty(this)">
+                        Easy
+                    </div>
+                    <div class="difficulty-option" data-difficulty="medium" onclick="selectDifficulty(this)">
+                        Medium
+                    </div>
+                    <div class="difficulty-option" data-difficulty="hard" onclick="selectDifficulty(this)">
+                        Hard
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            
+            <button class="start-button" id="startBtn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading questions...</p>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <div class="current-section" id="currentSection">Science</div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            
+            <div class="question-counter" id="questionCounter">
+                Question 1 of 10
+            </div>
+
+            <div class="question-container">
+                <div class="question" id="question">
+                    Question will appear here
+                </div>
+                
+                <div class="options" id="options">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <div class="timer" id="timer">
+                    <div class="timer-icon">
+                        <div class="timer-hand"></div>
+                    </div>
+                    <span id="timeLeft">30s</span>
+                </div>
+                <button class="next-button" id="nextButton" onclick="nextQuestion()">
+                    Next Question
+                </button>
+            </div>
+        </div>
+
+        <div class="results-screen" id="resultsScreen">
+            <div class="score" id="finalScore">0/10</div>
+            <div class="score-message" id="scoreMessage">Great job!</div>
+            
+            <div class="score-details">
+                <div class="score-item">
+                    <span>Subject:</span>
+                    <span id="resultSubject">Science</span>
+                </div>
+                <div class="score-item">
+                    <span>Difficulty:</span>
+                    <span id="resultDifficulty">Medium</span>
+                </div>
+                <div class="score-item">
+                    <span>Correct Answers:</span>
+                    <span id="correctCount">0</span>
+                </div>
+                <div class="score-item">
+                    <span>Incorrect Answers:</span>
+                    <span id="incorrectCount">0</span>
+                </div>
+                <div class="score-item">
+                    <span>Accuracy:</span>
+                    <span id="accuracy">0%</span>
+                </div>
+            </div>
+            
+            <button class="restart-button" onclick="restartQuiz()">Take Quiz Again</button>
+            <button class="restart-button" onclick="changeSubject()">Change Subject</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
