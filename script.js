@@ -293,7 +293,7 @@ let questions = [];
                 } else {
                     showResults();
                 }
-            }, 1500);
+            }, 1000);
         }
 
         function startTimer() {
@@ -309,7 +309,7 @@ let questions = [];
                     }
                     nextQuestion();
                 }
-            }, 1000);
+            }, 700);
         }
 
         function resetTimer() {
